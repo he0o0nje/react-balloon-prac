@@ -1,0 +1,157 @@
+@mixin rainbowColor($width, $height, $origin, $color, $left, $top) {
+  width: $width;
+  height: $height;
+  transform-origin: $origin;
+  background-color: $color;
+  left: $left;
+  top: $top;
+}
+
+.rainbow {
+  position: absolute;
+  top: 280px;
+  right: 185px;
+  width: calc(11px * 18);
+  height: calc(11px * 9);
+  overflow: hidden;
+  div {
+    border-radius: 500px 500px 0 0;
+    position: absolute;
+    animation: myMove 3s;
+  }
+
+  .red {
+    @include rainbowColor(
+      calc(11px * 18),
+      calc(11px * 9),
+      calc(11px * 9) calc(11px * 9),
+      red,
+      null,
+      null
+    );
+  }
+
+  .orange {
+    @include rainbowColor(
+      calc(11px * 16),
+      calc(11px * 8),
+      calc(11px * 8) calc(11px * 8),
+      orange,
+      11px,
+      11px
+    );
+  }
+
+  .yellow {
+    @include rainbowColor(
+      calc(11px * 14),
+      calc(11px * 7),
+      calc(11px * 7) calc(11px * 7),
+      yellow,
+      calc(11px * 2),
+      calc(11px * 2)
+    );
+  }
+
+  .green {
+    @include rainbowColor(
+      calc(11px * 12),
+      calc(11px * 6),
+      calc(11px * 6) calc(11px * 6),
+      green,
+      calc(11px * 3),
+      calc(11px * 3)
+    );
+  }
+
+  .blue {
+    @include rainbowColor(
+      calc(11px * 10),
+      calc(11px * 5),
+      calc(11px * 5) calc(11px * 5),
+      lightBlue,
+      calc(11px * 4),
+      calc(11px * 4)
+    );
+  }
+
+  .indigo {
+    @include rainbowColor(
+      calc(11px * 8),
+      calc(11px * 4),
+      calc(11px * 4) calc(11px * 4),
+      indigo,
+      calc(11px * 5),
+      calc(11px * 5)
+    );
+  }
+
+  .violet {
+    @include rainbowColor(
+      calc(11px * 6),
+      calc(11px * 3),
+      calc(11px * 3) calc(11px * 3),
+      violet,
+      calc(11px * 6),
+      calc(11px * 6)
+    );
+  }
+
+  .middle {
+    @include rainbowColor(
+      calc(11px * 4),
+      calc(11px * 2),
+      calc(11px * 2) calc(11px * 2),
+      rgb(62, 213, 240),
+      calc(11px * 7),
+      calc(11px * 7)
+    );
+    transform: rotate(0);
+    animation: none;
+  }
+}
+
+@keyframes myMove {
+  0% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.rainbow-cloud {
+  position: absolute;
+  top: 360px;
+  right: 343px;
+  width: 55px;
+  height: 50px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  z-index: 13;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    width: 50px;
+    height: 52px;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-left: 0;
+    border-radius: 50%;
+  }
+  &::after {
+    top: 3px;
+    left: 60px;
+    width: 55px;
+    height: 45px;
+  }
+}
+.right {
+  top: 360px;
+  right: 225px;
+  rotate: -10deg;
+}

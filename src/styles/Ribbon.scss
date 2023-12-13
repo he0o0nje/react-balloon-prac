@@ -1,0 +1,59 @@
+@mixin ribbonDiv {
+  position: absolute;
+  z-index: -2;
+  border: 40px solid red;
+}
+
+.ribbon {
+  width: 270px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  color: #fff;
+  font: 50px/75px sans-serif;
+  font-weight: bold;
+  text-align: center;
+  background: red;
+  border-left: 13px solid #000;
+  rotate: -10deg;
+
+  animation: main 1.5s;
+
+  div {
+    @include ribbonDiv;
+  }
+
+  div:first-child {
+    width: 0;
+    top: -3px;
+    left: -88px;
+    border-left-color: transparent;
+    rotate: 5deg;
+  }
+
+  div:last-child {
+    bottom: 0;
+    left: 230px;
+    border-right-color: transparent;
+  }
+}
+
+@keyframes main {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes back {
+  0%,
+  75% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

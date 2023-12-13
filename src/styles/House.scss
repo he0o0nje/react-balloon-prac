@@ -1,0 +1,182 @@
+@mixin pseudoAbsolute {
+  content: "";
+  position: absolute;
+}
+
+@mixin roofProperties($color) {
+  height: 28px;
+  background-color: $color;
+  cursor: pointer;
+}
+
+@mixin sideLines {
+  @include pseudoAbsolute;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #000;
+}
+
+@mixin windowProperties($width, $height, $color) {
+  width: $width;
+  height: $height;
+  background-color: $color;
+  border: 5px solid red;
+  position: absolute;
+}
+
+.house {
+  position: relative;
+  .roof {
+    width: 250px;
+    transform: translate(27%, 103%);
+    position: relative;
+    z-index: 10;
+    .roof-top {
+      @include roofProperties(#222);
+      clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+      border-top: 4px solid #fff;
+      margin-bottom: -0.5px;
+      &::before,
+      &::after {
+        @include pseudoAbsolute;
+        top: -40%;
+        width: 4px;
+        height: 81px;
+        background: #fff;
+      }
+      &::before {
+        left: 15%;
+        transform: rotate(67deg);
+      }
+      &::after {
+        right: 15%;
+        transform: rotate(-67deg);
+      }
+    }
+    .roof-bottom {
+      margin-top: -1px;
+      @include roofProperties(#222);
+    }
+  }
+  .home-back {
+    width: 385px;
+    height: 280px;
+    background-color: #222;
+    clip-path: polygon(9% 0%, 91% 0%, 100% 100%, 0% 100%);
+    position: relative;
+    z-index: 8;
+    cursor: pointer;
+  }
+  .home-front {
+    width: 270px;
+    height: 263px;
+    background-color: #222;
+    clip-path: polygon(9% 0%, 91% 0%, 100% 100%, 0% 100%);
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    z-index: 10;
+    cursor: pointer;
+    &::before,
+    &::after {
+      @include sideLines;
+    }
+    &::before {
+      left: 4.3%;
+      transform: rotate(5.2deg);
+    }
+    &::after {
+      right: 4.3%;
+      transform: rotate(-5.2deg);
+    }
+    .window {
+      @include windowProperties(170px, 100px, rgb(255, 195, 42));
+      border-radius: 50% 50% 0 0;
+      top: 25px;
+      left: 46px;
+      &::before,
+      &::after {
+        @include windowProperties(70px, 100px, rgb(255, 195, 42));
+        content: "";
+        border-radius: 45% 45% 0 0;
+      }
+      &::before {
+        top: 125px;
+        left: -10px;
+      }
+      &::after {
+        top: 125px;
+        left: 100px;
+      }
+      .window-inner {
+        width: 170px;
+        height: 1px;
+        border-top: 3px solid red;
+        position: absolute;
+        top: 70%;
+        &::before,
+        &::after {
+          @include pseudoAbsolute;
+          border-left: 3px solid red;
+          width: 1px;
+          height: 100px;
+        }
+        &::before {
+          top: -70px;
+          left: 50px;
+        }
+        &::after {
+          top: -70px;
+          left: 115px;
+        }
+      }
+      .window-inner-lft,
+      .window-inner-rgt {
+        width: 1px;
+        height: 100px;
+        border-left: 3px solid red;
+        position: absolute;
+        top: 130px;
+        left: 27px;
+        z-index: 1;
+        &::before,
+        &::after {
+          @include pseudoAbsolute;
+          border-top: 3px solid red;
+          width: 70px;
+          height: 1px;
+        }
+        &::before {
+          top: 40px;
+          left: -35px;
+        }
+        &::after {
+          top: 70px;
+          left: -35px;
+        }
+      }
+      .window-inner-rgt {
+        left: 137px;
+      }
+    }
+  }
+}
+
+.home {
+  position: relative;
+  display: block;
+  .home-roof {
+    width: 336px;
+    transform: translate(7.1%, 55%);
+    position: relative;
+    z-index: 9;
+    .home-roof-top {
+      @include roofProperties(#000);
+      clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+    }
+    .home-roof-bot {
+      @include roofProperties(#000);
+    }
+  }
+}

@@ -1,0 +1,145 @@
+.balloon {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  z-index: 12;
+  cursor: pointer;
+  will-change: transform; // 브라우저에게 미리 알려주기
+  &.move {
+    animation: balloonRotate 2s infinite alternate ease-in-out;
+  }
+  // &.move1,
+  // &.move2,
+  // &.move3,
+  // &.move4 {
+  //   animation: balloonRotate 2s infinite alternate ease-in-out;
+  // } 많은 계산이 필요해서 렉걸림, .move로 대체
+  .handle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #000;
+    border-radius: 50px 50px 0 0;
+    background-color: red;
+    z-index: 13;
+  }
+  &.heart {
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      left: 50px;
+      width: 100px;
+      height: 150px;
+      background-color: red;
+      border-radius: 50px 50px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+      border: 1px solid#000;
+    }
+    &:after {
+      left: -50px;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+      background: radial-gradient(orange, red 60%);
+      border-left: none;
+    }
+    .handle {
+      top: 145px;
+      left: 45px;
+    }
+  }
+
+  &.circle {
+    width: 125px;
+    height: 150px;
+    border-radius: 50% 50% 50% 60% / 40% 40% 70% 70%;
+    border: 1px solid #000;
+    .handle {
+      bottom: -10px;
+      left: 60px;
+    }
+  }
+
+  &.flower {
+    width: 200px;
+    height: 70px;
+    background-color: #fff;
+    border-radius: 50px;
+    border: 1px solid #000;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 70px;
+      background-color: #fff;
+      border-radius: 50px;
+      rotate: 60deg;
+      border-right: 1px solid #000;
+      border-left: 1px solid #000;
+    }
+    &::after {
+      rotate: -60deg;
+    }
+    .handle {
+      height: 20px;
+      bottom: -57px;
+      left: 95px;
+      background-color: #fff;
+      &::before {
+        content: "";
+        position: absolute;
+        top: -115px;
+        left: -40px;
+        width: 90px;
+        height: 90px;
+        background: radial-gradient(at 30% 20%, white, yellow 40%);
+        border: 1px solid #aaa;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &.bear {
+    width: 130px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: rgb(224, 108, 0);
+    border: 1px solid #000;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgb(224, 108, 0);
+      border: 1px solid #000;
+    }
+    &::before {
+      left: -10px;
+      border-right: none;
+      border-bottom: none;
+    }
+    &::after {
+      right: -10px;
+      border-left: none;
+      border-bottom: none;
+    }
+    .handle {
+      bottom: -10px;
+      left: 60px;
+      background-color: rgb(224, 108, 0);
+    }
+  }
+}
+
+@keyframes balloonRotate {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}

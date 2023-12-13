@@ -1,0 +1,75 @@
+@mixin borderProperties {
+  border: 1px solid #000;
+  border-radius: 50% 50% 10% 10%;
+  background: red;
+  overflow: hidden;
+}
+
+#heart {
+  position: absolute;
+  top: 40%;
+  right: 20%;
+  width: 460px;
+  height: 370px;
+  rotate: 33deg;
+  z-index: 15;
+  animation: pulse 2s infinite ease-in-out;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    width: 250px;
+    height: 370px;
+    @include borderProperties;
+  }
+  &::before {
+    left: 230px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+  &::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+    border-left: 0;
+    border-bottom: 0;
+    background: radial-gradient(orange, red 80%);
+  }
+  .big-handle {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 20px;
+    height: 25px;
+    border: 1px solid #000;
+    border-radius: 50px 50px 0 0;
+    background-color: red;
+    z-index: 16;
+  }
+  h1 {
+    position: absolute;
+    top: -50px;
+    left: 70px;
+    color: #fff;
+    font-size: 110px;
+    z-index: 17;
+    &:last-child {
+      position: absolute;
+      top: 50px;
+      left: 110px;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,82 @@
+@mixin commonProperties {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: -5;
+}
+
+.cloud {
+  width: 100px;
+  height: 110px;
+  top: 0;
+  left: 0;
+  @include commonProperties;
+
+  &::before,
+  &::after {
+    content: "";
+    @include commonProperties;
+  }
+  &::before {
+    width: 90px;
+    height: 120px;
+    top: -10px;
+    right: -50px;
+    transform: rotate(-20deg);
+  }
+  &::after {
+    width: 70px;
+    height: 80px;
+    top: -5px;
+    right: -80px;
+  }
+  .extra {
+    width: 70px;
+    height: 100px;
+    top: 5px;
+    right: -110px;
+    transform: rotate(30deg);
+    @include commonProperties;
+
+    &::before {
+      content: "";
+      width: 80px;
+      height: 80px;
+      top: -10px;
+      right: -40px;
+      @include commonProperties;
+    }
+  }
+  .line {
+    width: 50px;
+    height: 25px;
+    border-top: 3px solid #ddd;
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+    left: 65px;
+    transform: rotate(30deg);
+    z-index: -1;
+
+    &::before,
+    &::after {
+      content: "";
+      width: 40px;
+      height: 30px;
+      border-top: 3px solid #ddd;
+      border-radius: 50%;
+      position: absolute;
+    }
+    &::before {
+      top: -12px;
+      left: 48px;
+      transform: rotate(-30deg);
+    }
+    &::after {
+      height: 20px;
+      top: -32px;
+      left: 78px;
+      transform: rotate(-50deg);
+    }
+  }
+}

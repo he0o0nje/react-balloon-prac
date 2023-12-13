@@ -1,0 +1,13 @@
+body {
+  background: linear-gradient(to bottom, rgb(135, 220, 235), deepskyblue);
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
